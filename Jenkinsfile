@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
                 sh 'pwd'
-                echo 'Hello World'
+                echo 'Hello World from ci-pipeline'
             }
         }
     }
