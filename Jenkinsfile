@@ -10,7 +10,7 @@ pipeline {
         stage('Docker Build') {
     	agent any
             steps {
-                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                sh 'ls'
             }
         }
     }
