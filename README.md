@@ -23,7 +23,8 @@
 
 - Mô tả về flow :
   + Khi user commit code lên git , Jenkin sẽ thực hiện pipeline được cấu hình trong Jenkinfile của Repo 1 trên git , các stage bao gồm : clone project -> build project -> build image. Image sẽ được define trong Dockerfile trên Repo 1.
-  + Sau khi image được build sẽ thay đổi image version
+  + Sau khi image được build sẽ thay đổi image version trong helm và argocde sẽ tự sync state là deploy trên k8s.
+  + Trong flow này , người dùng sẽ chỉ cần commit các thay đổi của code và các thay đổi đó sẽ tự động được apply lên k8s một cách hoàn toàn tự động.
 
 
 
