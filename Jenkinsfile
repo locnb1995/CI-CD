@@ -7,6 +7,7 @@ pipeline {
                 sh 'pwd'
                 echo 'Hello World from ci-pipeline'
                 echo 'Add webhook from github to jenkins'
+                sh 'docker --version'
             }
         }
     }
