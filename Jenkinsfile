@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'docker build -t demo-ci-pipline .'
+                sh 'sudo docker build -t demo-ci-pipline .'
             }
         }
     }
