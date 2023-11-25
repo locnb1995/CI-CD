@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                sh 'ls'
+                sh 'docker build -t demo-ci-pipline .'
             }
         }
     }
