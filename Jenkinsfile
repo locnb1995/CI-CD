@@ -5,6 +5,7 @@ pipeline {
                 returnStdout: true,
                 script: 'git rev-parse HEAD'
             )}"""
+        IMAGE_NAME = 'demo-ci-pipline'
     }
 
     stages {
@@ -16,8 +17,13 @@ pipeline {
         stage('Docker Build Image') {
             steps {
                 sh ('echo ')
-                sh ('sudo docker build -t demo-ci-pipline:$COMMIT_ID .')
+                sh ('sudo docker build -t $IMAGE_NAME:$COMMIT_ID .')
                 sh ('sudo docker tag demo-ci-pipline:$COMMIT_ID locnb1995/demo-ci-pipline:$COMMIT_ID')
+            }
+        }
+        stage('Push Image') {
+            steps {
+                sh ('sudo docker push locnb1995/cicd-repo:$IMAGE_NAME:$COMMIT_ID')
             }
         }
     }
