@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent 'jenkins-build-agent-1'
 
     stages {
         stage('Maven Build') {
