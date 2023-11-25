@@ -8,7 +8,6 @@ pipeline {
             }
         }
         stage('Docker Build') {
-    	agent any
             steps {
                 sh 'ls'
             }
