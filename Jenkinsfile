@@ -24,9 +24,9 @@ pipeline {
         stage('Push Image') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'fbeae83f-df3a-45f7-b405-174e88f50acb', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh('echo $USERNAME $PASSWORD')
+                    sh('sudo docker login -u $USERNAME -p $PASSWORD')
                 }
-                //sh('sudo docker push locnb1995/$IMAGE_NAME:$COMMIT_ID')
+                sh('sudo docker push locnb1995/$IMAGE_NAME:$COMMIT_ID')
             }
         }
     }
