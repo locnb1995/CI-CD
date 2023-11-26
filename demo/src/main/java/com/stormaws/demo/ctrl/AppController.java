@@ -24,4 +24,9 @@ public class AppController {
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.GET , value = "health")
+    public String health(){
+        return "OK";
+    }
+
 }
