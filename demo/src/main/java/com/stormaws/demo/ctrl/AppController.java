@@ -18,8 +18,8 @@ public class AppController {
             , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Person> index(){
         Person person = new Person();
-        person.setName("Locnb");
-        person.setAge(28);
+        person.setName("Nguyen Bao loc");
+        person.setAge(29);
         person.setHometown("Thai Binh");
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
