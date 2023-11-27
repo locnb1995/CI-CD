@@ -33,12 +33,12 @@ pipeline {
             steps {
                 sh('echo image tag $COMMIT_ID will update for tag')
                 sh('sudo rm -r -f helm-CI-CD/')
-                sh('sudo git clone https://github.com/locnb1995/helm-CI-CD')
+                sh('sudo git clone https://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@github.com/locnb1995/helm-CI-CD.git')
                 dir('helm-CI-CD'){
                     sh('echo working_dir $(pwd)')
                     sh("""sudo yq -i e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
                     sh("""sudo yq e '.image.tag' helm-for-demo-cicd/values.yaml""")
-                    sh('git config --global --add safe.directory $(pwd)')
+                    //sh('git config --global --add safe.directory $(pwd)')
                     sh('git config --global user.name baoloc.hus@gmail.com')
                     sh('git status')
                     sh('sudo git add .')
