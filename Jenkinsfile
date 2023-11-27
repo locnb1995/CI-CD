@@ -42,7 +42,7 @@ pipeline {
                     sh('git status')
                     sh('sudo git add .')
                     sh('sudo git commit -m "update image tag"')
-                    sh('sudo git push orgin main')
+                    sh('sudo git push')
                 }
             }
         }
