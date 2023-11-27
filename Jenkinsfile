@@ -31,17 +31,17 @@ pipeline {
         }
         stage('Update helm image tag'){
             steps {
-                sh('echo image tag $COMMIT_ID')
+                sh('echo image tag $COMMIT_ID will update for tag')
                 sh('sudo rm -r -f helm-CI-CD/')
                 sh('sudo git clone https://github.com/locnb1995/helm-CI-CD')
                 dir('helm-CI-CD'){
                     sh('echo working_dir $(pwd)')
-                    sh("""yq e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
-                    sh('git config --global --add safe.directory $(pwd)')
+                    sh("""yq -i e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
+                    /*sh('git config --global --add safe.directory $(pwd)')
                     sh('git status')
                     sh('sudo git add .')
                     sh('sudo git commit -m "update image tag"')
-                    sh('sudo git push orgin main')
+                    sh('sudo git push orgin main')*/
                 }
             }
         }
