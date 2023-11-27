@@ -37,6 +37,7 @@ pipeline {
                 dir('helm-CI-CD'){
                     sh('echo working_dir $(pwd)')
                     sh("""yq e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
+                    sh('git config --global --add safe.directory $(pwd)')
                     sh('git add .')
                     sh('git commit -m "update image tag"')
                     sh('git push orgin main')
