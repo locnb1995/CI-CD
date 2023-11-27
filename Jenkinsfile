@@ -33,18 +33,19 @@ pipeline {
             steps {
                 sh('echo image tag $COMMIT_ID will update for tag')
                 sh('sudo rm -r -f helm-CI-CD/')
-                sh('sudo git clone https://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@github.com/locnb1995/helm-CI-CD.git')
-                dir('helm-CI-CD'){
-                    sh('echo working_dir $(pwd)')
-                    sh("""sudo yq -i e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
-                    sh("""sudo yq e '.image.tag' helm-for-demo-cicd/values.yaml""")
-                    //sh('git config --global --add safe.directory $(pwd)')
-                    sh('git config --global user.name baoloc.hus@gmail.com')
-                    sh('git status')
-                    sh('sudo git add .')
-                    sh('sudo git commit -m "update image tag"')
-                    sh('sudo git push')
-                }
+                withCredentials([usernamePassword(credentialsId: '6438f284-50df-4e6f-a584-f7f26f8eb374', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh('git config --global user.name $USERNAME')
+                    sh('sudo git clone https://$PASSWORD@github.com/locnb1995/helm-CI-CD.git')
+                    dir('helm-CI-CD'){
+                        sh('echo working_dir $(pwd)')                        
+                        sh("""sudo yq -i e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
+                        sh("""sudo yq e '.image.tag' helm-for-demo-cicd/values.yaml""")
+                        sh('git status')
+                        sh('sudo git add .')
+                        sh('sudo git commit -m "update image tag"')
+                        sh('sudo git push')
+                    }
+                }               
             }
         }
     }
