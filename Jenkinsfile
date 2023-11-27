@@ -36,7 +36,7 @@ pipeline {
                 sh('sudo git clone https://github.com/locnb1995/helm-CI-CD')
                 dir('helm-CI-CD'){
                     sh('echo working_dir $(pwd)')
-                    sh('yq e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml')
+                    sh("""yq e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
                     sh('git add .')
                     sh('git commit -m "update image tag"')
                     sh('git push orgin main')
