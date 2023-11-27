@@ -4,7 +4,7 @@ pipeline {
         COMMIT_ID = """${sh(
                 returnStdout: true,
                 script: 'git rev-parse HEAD'
-            )}"""
+            ).trim()}"""
         IMAGE_NAME = 'demo-ci-pipline'
     }
 
@@ -36,7 +36,7 @@ pipeline {
                 sh('sudo git clone https://github.com/locnb1995/helm-CI-CD')
                 dir('helm-CI-CD'){
                     sh('echo working_dir $(pwd)')
-                    sh("""sudo yq -i e '.image.tag = "$COMMIT_ID.trim()"' helm-for-demo-cicd/values.yaml""")
+                    sh("""sudo yq -i e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
                     sh("""sudo yq e '.image.tag' helm-for-demo-cicd/values.yaml""")
                     /*sh('git config --global --add safe.directory $(pwd)')
                     sh('git status')
