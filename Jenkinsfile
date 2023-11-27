@@ -32,6 +32,7 @@ pipeline {
         stage('Update helm image tag'){
             steps {
                 sh('echo image tag $COMMIT_ID')
+                sh('rm -r -f helm-CI-CD/')
                 sh('sudo git clone https://github.com/locnb1995/helm-CI-CD')
                 sh('cd helm-CI-CD/')
                 sh('echo working_dir $(pwd)')
@@ -39,7 +40,6 @@ pipeline {
                 sh('git add .')
                 sh('git commit -m "update image tag"')
                 sh('git push orgin main')
-                sh('cd .. && rm -r helm-CI-CD/')
             }
         }
     }
