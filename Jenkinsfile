@@ -39,6 +39,7 @@ pipeline {
                     sh("""sudo yq -i e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
                     sh("""sudo yq e '.image.tag' helm-for-demo-cicd/values.yaml""")
                     sh('git config --global --add safe.directory $(pwd)')
+                    sh('git config --global user.name baoloc.hus@gmail.com')
                     sh('git status')
                     sh('sudo git add .')
                     sh('sudo git commit -m "update image tag"')
