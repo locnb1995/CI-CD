@@ -38,11 +38,11 @@ pipeline {
                     sh('echo working_dir $(pwd)')
                     sh("""sudo yq -i e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
                     sh("""sudo yq e '.image.tag' helm-for-demo-cicd/values.yaml""")
-                    /*sh('git config --global --add safe.directory $(pwd)')
+                    sh('git config --global --add safe.directory $(pwd)')
                     sh('git status')
                     sh('sudo git add .')
                     sh('sudo git commit -m "update image tag"')
-                    sh('sudo git push orgin main')*/
+                    sh('sudo git push orgin main')
                 }
             }
         }
