@@ -20,7 +20,7 @@ public class AppController {
         Person person = new Person();
         person.setName("Nguyen Bao loc");
         person.setAge(29);
-        person.setHometown("Ha Noi");
+        person.setHometown("Ha Noi 1");
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
