@@ -36,6 +36,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: '6438f284-50df-4e6f-a584-f7f26f8eb374', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh('git config --global user.name $USERNAME')
                     sh('sudo git clone https://$PASSWORD@github.com/locnb1995/helm-CI-CD.git')
+                    sh('git config --global --add safe.directory /home/ubuntu/jenkins_workspace/workspace/test-ci-cd/helm-CI-CD')
                     dir('helm-CI-CD'){
                         sh('echo working_dir $(pwd)')                        
                         sh("""sudo yq -i e '.image.tag = "$COMMIT_ID"' helm-for-demo-cicd/values.yaml""")
