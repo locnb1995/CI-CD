@@ -26,7 +26,7 @@
   + Sau khi image được build sẽ thay đổi image version trong helm và argocde sẽ tự sync state là deploy trên k8s.
   + Trong flow này , người dùng sẽ chỉ cần commit các thay đổi của code và các thay đổi đó sẽ tự động được apply lên k8s một cách hoàn toàn tự động.
  
-- Kiến thức cần nắm được trước khi thực hiện : Linux , Network , Container , K8s , Helm, Git , Jenkins , Argocd.
+- Kiến thức cần nắm được trước khi thực hiện : Linux , Network , Container , K8s , Helm, Git , Jenkins , Argocd..
 
 
 
